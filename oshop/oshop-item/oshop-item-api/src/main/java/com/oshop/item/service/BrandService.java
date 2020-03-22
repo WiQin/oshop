@@ -3,6 +3,8 @@ package com.oshop.item.service;
 import com.oshop.common.vo.PageResult;
 import com.oshop.item.pojo.Brand;
 
+import java.util.List;
+
 /**
  * ${Description}
  *
@@ -11,4 +13,6 @@ import com.oshop.item.pojo.Brand;
  */
 public interface BrandService {
     PageResult<Brand> queryBrandByPage(Integer page,Integer rows,String sortBy,Boolean desc,String key);
+
+    Void saveBrand(Brand brand, List<Long> cids);
 }

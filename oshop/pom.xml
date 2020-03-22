@@ -12,6 +12,7 @@
         <module>oshop-gateway</module>
         <module>oshop-item</module>
         <module>oshop-common</module>
+        <module>oshop-upload</module>
     </modules>
     <packaging>pom</packaging>
 

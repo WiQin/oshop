@@ -10,6 +10,7 @@ import com.oshop.item.pojo.Brand;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
@@ -53,5 +54,27 @@ public class BrandServiceImpl implements BrandService{
         PageInfo<Brand> pageInfo = new PageInfo<>(result);
 
         return new PageResult<>(pageInfo.getTotal(),result);
+    }
+
+    @Override
+    @Transactional
+    public Void saveBrand(Brand brand, List<Long> cids) {
+        //新增品牌
+        brand.setId(null);
+        int count = brandMapper.insert(brand);//id自增长
+
+        //判断是否成功
+        if (count != 1){
+            throw new BizException(ExceptionEnums.BRAND_SAVE_ERROR);
+        }
+
+        //新增中间表  没有实体类，无法使用通用mapper  需手动编写方法及sql，实现中间表的新增
+        for (Long cid : cids){
+            count = brandMapper.insertCategoryBrand(cid, brand.getId());
+            if (count != 1){
+                throw new BizException(ExceptionEnums.BRAND_SAVE_ERROR);
+            }
+        }
+        return null;
     }
 }

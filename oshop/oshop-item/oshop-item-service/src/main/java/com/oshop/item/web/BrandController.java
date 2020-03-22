@@ -4,11 +4,11 @@ import com.oshop.common.vo.PageResult;
 import com.oshop.item.pojo.Brand;
 import com.oshop.item.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * ${Description}
@@ -42,5 +42,19 @@ public class BrandController {
             ){
         PageResult<Brand> result = brandService.queryBrandByPage(page,rows,sortBy,desc,key);
         return ResponseEntity.ok(result);
+    }
+
+    /**
+     * 新增品牌
+     *
+     * 不需返回信息，直接调用build()
+     * @param brand
+     * @param cids
+     * @return
+     */
+    @PostMapping
+    public ResponseEntity<Void> saveBrand(Brand brand, @RequestParam("cids")List<Long> cids){
+        brandService.saveBrand(brand,cids);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

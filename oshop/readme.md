@@ -49,6 +49,12 @@ CORS（跨域资源共享）
 ###品牌管理
 tb_brand  tb_category_brand
 后台提供接口
+1.品牌查询
+2.品牌新增  
+名称，首字母，logo,分类（三级都选择，允许多选）
+路径：api/item/brand    请求方式：post
 
+###图片上传  oshop-upload
+剥离为一个微服务
 
  
