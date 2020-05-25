@@ -2,6 +2,7 @@ package com.oshop.item.web;
 
 import com.oshop.common.vo.PageResult;
 import com.oshop.item.pojo.Brand;
+import com.oshop.item.pojo.Spu;
 import com.oshop.item.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,5 +57,16 @@ public class BrandController {
     public ResponseEntity<Void> saveBrand(Brand brand, @RequestParam("cids")List<Long> cids){
         brandService.saveBrand(brand,cids);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    /**
+     * 根据cid查询品牌
+     * @param cid
+     * @return
+     */
+    @GetMapping("/cid/{cid}")
+    public ResponseEntity<List<Brand>> queryBrandByCid(@PathVariable("cid") Long cid){
+
+        return ResponseEntity.ok()
     }
 }

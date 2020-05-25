@@ -13,6 +13,7 @@
         <module>oshop-item</module>
         <module>oshop-common</module>
         <module>oshop-upload</module>
+        <module>mqdemo</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -15,4 +15,8 @@ public interface BrandService {
     PageResult<Brand> queryBrandByPage(Integer page,Integer rows,String sortBy,Boolean desc,String key);
 
     Void saveBrand(Brand brand, List<Long> cids);
+
+    Brand queryBrandById(Long id);
+
+    List<Brand> queryBrandByCid(Long cid);
 }

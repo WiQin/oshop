@@ -2,6 +2,7 @@ package com.oshop.item.mapper;
 
 import com.oshop.item.pojo.Category;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.additional.idlist.IdListMapper;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
@@ -11,5 +12,5 @@ import tk.mybatis.mapper.common.Mapper;
  * @date 2020/03/08
  */
 @Service
-public interface CategoryMapper extends Mapper<Category> {
+public interface CategoryMapper extends Mapper<Category>, IdListMapper<Category,Long> {
 }

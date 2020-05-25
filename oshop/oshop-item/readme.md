@@ -49,3 +49,9 @@ SKU:库存量单位，SPU商品集因具体特性不同而细分的每个商品�
 
 SPU：id（主键）  title(标题)  description(描述)  specification(规格)  packing_list(包装)  after_service(售后服务)  comment(评价)
 SKU：标题  价格  对于商品特有参数（颜色，内存等）如何设计-->包含在规格参数中-->需在规格参数中加字段（generic  是否为sku通用属性）
+
+SPU: SPU_PARAM  SPU_DETAIL
+SKU: SKU  STOCK
+
+##商品查询
+###商品列表查询

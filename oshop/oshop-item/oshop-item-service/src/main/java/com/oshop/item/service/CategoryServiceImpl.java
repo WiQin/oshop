@@ -35,4 +35,14 @@ public class CategoryServiceImpl implements CategoryService{
         }
         return result;
     }
+
+    @Override
+    public List<Category> queryByIds(List<Long> ids) {
+        List<Category> categories = categoryMapper.selectByIdList(ids);
+        if (CollectionUtils.isEmpty(categories)){
+            //返回404
+            throw new BizException(ExceptionEnums.CATEGORY_NOT_FOUND);
+        }
+        return categories;
+    }
 }
