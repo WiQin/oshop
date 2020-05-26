@@ -1,4 +1,4 @@
-package com.oshop.mq.simplre;
+package com.oshop.mq.simple;
 
 import com.oshop.mq.util.ConnectionUtil;
 import com.rabbitmq.client.*;

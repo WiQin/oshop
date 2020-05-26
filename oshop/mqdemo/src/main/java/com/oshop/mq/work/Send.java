@@ -4,6 +4,11 @@ import com.oshop.mq.util.ConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
+/**
+ * work消息模型
+ * 工作队列，又称任务队列。主要思想就是：尽可能的减少执行资源密集型任务时的等待时间。
+ * 我们将任务封装为消息并发送到队列，在后台的工作进程将弹出任务并进行作业。当你运行很多worker时，任务将在他们之间共享
+ */
 public class Send {
     private final static String QUEUE_NAME = "test_work_queue";
 
